@@ -1,0 +1,22 @@
+name: DEVOPS FastAPI DEMO
+
+on:
+  push:
+    branches: 
+      - main
+      - development
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/chekout@v3
+      
+      - name: install dependencies
+        run: 
+          pip3 install -r requirements.txt
+      
+      - name: unittest
+        run: 
+          pytest test/test.py
